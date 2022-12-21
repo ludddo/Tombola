@@ -10,6 +10,8 @@ namespace Tombola
     {
         static void Main(string[] args)
         {
+            //PROVA
+            Console.WriteLine("CIAO");
         }
     }
 }
