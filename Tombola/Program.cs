@@ -10,8 +10,10 @@ namespace Tombola
     {
         static void Main(string[] args)
         {
-            //PROVA
-            Console.WriteLine("CIAO");
+            Console.WriteLine("Inserire il numero di giocatori");
+            Console.WriteLine("Inserire il numero di giocatori");
+            Console.WriteLine("Inserire il numero di giocatori");
+
         }
     }
 }
