@@ -12,15 +12,16 @@ namespace Tombola
         static void Main(string[] args)
         {
             int[,] player1,player2 = new int[3,9];
+            int[] numTabel = new int[90];
             Console.WriteLine("Cartella Giocatore 1");
             player1 = Cartella();
             Console.WriteLine("Cartella Giocatore 2");
             player2 = Cartella();
             Console.WriteLine("TABELLONE");
-            Tabellone();
+            numTabel = Tabellone();
         }
 
-        static void Tabellone()
+        static int[] Tabellone()
         {
             int[] tabellone = new int[90];
             int x = 0;
@@ -53,12 +54,8 @@ namespace Tombola
                 {
                     Console.Write(tabellone[k] + "  ");
                 }
-                
-                
-                
             }
-            
-            
+            return tabellone;
         }
         static int[,] Cartella() //GENERAZIONE CARTELLA
         {
