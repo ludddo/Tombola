@@ -11,11 +11,56 @@ namespace Tombola
 
         static void Main(string[] args)
         {
-            Cartella();
-            Cartella();
+            int[,] player1,player2 = new int[3,9];
+            Console.WriteLine("Cartella Giocatore 1");
+            player1 = Cartella();
+            Console.WriteLine("Cartella Giocatore 2");
+            player2 = Cartella();
+            Console.WriteLine("TABELLONE");
+            Tabellone();
         }
 
-        static void Cartella() //GENERAZIONE CARTELLA
+        static void Tabellone()
+        {
+            int[] tabellone = new int[90];
+            int x = 0;
+            for (int i = 0; i < 91; i++) //CARICAMENTO TABELLONE
+            {
+                
+                if (i != 0)
+                {
+                    tabellone[x] = i;
+                    x++;
+                }
+                
+            }
+
+            for (int k=0; k < 90; k++) //VISUALIZZAZIONE TABELLONE
+            {
+                if (k != 0)
+                {
+                    if (k % 10 == 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine();
+                    }
+                }
+                if (tabellone[k] < 10)
+                {
+                    Console.Write(" " + tabellone[k] + "  ");
+                }
+                else
+                {
+                    Console.Write(tabellone[k] + "  ");
+                }
+                
+                
+                
+            }
+            
+            
+        }
+        static int[,] Cartella() //GENERAZIONE CARTELLA
         {
             
             int[,] numeri = new int[3, 9];
@@ -136,7 +181,7 @@ namespace Tombola
                     }
                 }
             }
-
+            
             for (int i = 0; i < numeri.GetLength(0); i++) //STAMPA CARTELLA
             {
                 for (int j = 0; j < numeri.GetLength(1); j++)
@@ -162,6 +207,7 @@ namespace Tombola
             }
 
             Console.WriteLine();
+            return numeri;
         }
     }
 }
