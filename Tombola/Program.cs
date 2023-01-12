@@ -169,7 +169,7 @@ namespace Tombola
                     coordsYYYY++;
                     coordsYYYY++;
                 }
-                for (int l = 0; l < 91; l++) //AGGIORNAMENTO TABELLONE
+                for (int l = 0; l < 91; l++) //AGGIORNAMENTO DEL TABELLONE
                 {
                     if (l != 0)
                     {
