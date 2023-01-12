@@ -27,6 +27,7 @@ namespace Tombola
             Console.WriteLine("TABELLONE");
             numTabel = Tabellone();
             Tombola(player1, player2, player3);
+            Console.SetCursorPosition(55, 28);
         }
 
         static void Tombola(int[,] gioc1, int[,] gioc2, int[,]gioc3) //GENERAZIONE NUMERI CASUALI E CONTROLLO TOMBOLA
@@ -34,6 +35,7 @@ namespace Tombola
             int[] numero = new int[90];
             int playe1=0,playe2=0,playe3=0;
             int coordsX = 52, coordsY=1;
+            int coordsXX = 5, coordsYY = 3, coordsYYY = 13, coordsYYYY = 23;
 
             for (int i = 0; i < 90; i++) //CICLO RANDOM PER SCELTA NUMERO ESTRATTO
             {
@@ -48,10 +50,14 @@ namespace Tombola
                 }
             }
 
-            for (int k = 0; k < 90; k++) //CONTROLLO NUMERO USCITO E AGGIORNAMENTO TABELLONE
+            for (int k = 0; k < 91; k++) //CONTROLLO NUMERO USCITO E AGGIORNAMENTO TABELLONE
             {
                 coordsX = 52; 
                 coordsY = 3;
+                coordsXX = 5;
+                coordsYY = 3;
+                coordsYYY = 13;
+                coordsYYYY = 23;
                 if (playe1 == 15) //CONTROLLO INTERROMPIMENTO CICLO
                 {
                     break;
@@ -64,7 +70,106 @@ namespace Tombola
                 {
                     break;
                 }
-                for (int l = 0; l < 90; l++) //AGGIORNAMENTO TABELLONE
+                for (int i = 0; i < gioc1.GetLength(0); i++) //AGGIORNAMENTO CARTELLA GIOCATORE 1
+                {
+                    for (int j = 0; j < gioc1.GetLength(1); j++)
+                    {
+                        if (gioc1[i, j] != 0)
+                        {
+                            if (gioc1[i,j] == numero[k])
+                            {
+                                if (gioc1[i, j] > 10)
+                            {
+                                Console.SetCursorPosition(coordsXX, coordsYY);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                break;
+                            }
+                            else
+                            {
+                                Console.SetCursorPosition(coordsXX, coordsYY);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                break ;
+                            }
+                            }
+                            
+                        }
+                        coordsXX++;
+                        coordsXX++;
+                        coordsXX++;
+                    }
+                    coordsXX = 5;
+                    coordsYY++;
+                    coordsYY++;
+                }
+                for (int i = 0; i < gioc2.GetLength(0); i++) //AGGIORNAMENTO CARTELLA GIOCATORE 2
+                {
+                    for (int j = 0; j < gioc2.GetLength(1); j++)
+                    {
+                        if (gioc2[i, j] != 0)
+                        {
+                            if (gioc2[i, j] == numero[k])
+                            {
+                                if (gioc2[i, j] > 10)
+                                {
+                                    Console.SetCursorPosition(coordsXX, coordsYYY);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(coordsXX, coordsYYY);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                    break;
+                                }
+                            }
+
+                        }
+                        coordsXX++;
+                        coordsXX++;
+                        coordsXX++;
+                    }
+                    coordsXX = 5;
+                    coordsYYY++;
+                    coordsYYY++;
+                }
+                for (int i = 0; i < gioc3.GetLength(0); i++) //AGGIORNAMENTO CARTELLA GIOCATORE 3
+                {
+                    for (int j = 0; j < gioc3.GetLength(1); j++)
+                    {
+                        if (gioc3[i, j] != 0)
+                        {
+                            if (gioc3[i, j] == numero[k])
+                            {
+                                if (gioc3[i, j] > 10)
+                                {
+                                    Console.SetCursorPosition(coordsXX, coordsYYYY);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(coordsXX, coordsYYYY);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(numero[k]);
+                                    break;
+                                }
+                            }
+
+                        }
+                        coordsXX++;
+                        coordsXX++;
+                        coordsXX++;
+                    }
+                    coordsXX = 5;
+                    coordsYYYY++;
+                    coordsYYYY++;
+                }
+                for (int l = 0; l < 91; l++) //AGGIORNAMENTO TABELLONE
                 {
                     if (l != 0)
                     {
@@ -108,7 +213,8 @@ namespace Tombola
                 
                 Thread.Sleep(400);
 
-                for (int i = 0; i < gioc1.GetLength(0); i++) 
+                //CICLI CONTROLLI E STAMPA VITTORIA GIOCATORI
+                for (int i = 0; i < gioc1.GetLength(0); i++)  
                 {
                     if (playe1 == 15)
                     {
@@ -139,22 +245,23 @@ namespace Tombola
                         }
                         if (playe1 == 15)
                         {
-                            Console.SetCursorPosition(55, 20);
-                            Console.ForegroundColor = ConsoleColor.White;
+                            
+                            Console.SetCursorPosition(55, 21);
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("Tombola! Giocatore 1 HA VINTO!!!");
                             break;
                         }
                         if (playe2 == 15)
                         {
-                            Console.SetCursorPosition(55, 21);
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.SetCursorPosition(55, 22);
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("Tombola! Giocatore 2 HA VINTO!!!");
                             break;
                         }
                         if (playe3 == 15)
                         {
-                            Console.SetCursorPosition(55, 22);
-                            Console.ForegroundColor= ConsoleColor.White;
+                            Console.SetCursorPosition(55, 23);
+                            Console.ForegroundColor= ConsoleColor.Cyan;
                             Console.WriteLine("Tombola! Giocatore 3 HA VINTO!!!");
                             break;
                         }
@@ -236,9 +343,16 @@ namespace Tombola
                 num_appoggio1[i] = random.Next(x, y);
                 num_appoggio2[i] = random.Next(x, y);
                 num_appoggio3[i] = random.Next(x, y);
+                if (x == 80) //IF PER FAR COMPARIRE ANCHE IL 90
+                {
+                    
+                    num_appoggio1[i] = random.Next(x, 91);
+                    num_appoggio2[i] = random.Next(x, 91);
+                    num_appoggio3[i] = random.Next(x, 91);
+                }
                 x = x + 10;
                 y = y + 10;
-                if (num_appoggio1[0] == 0)
+                if (num_appoggio1[0] == 0) //CASI ECCEZIONI
                 {
                     num_appoggio1[0] = 1;
                 }
@@ -248,19 +362,19 @@ namespace Tombola
                 }
                 if (num_appoggio2[i] == num_appoggio1[i])
                 {
-                    num_appoggio2[i]++;
+                    num_appoggio2[i] = num_appoggio2[i] + 1;
                 }
                 if (num_appoggio2[i] == num_appoggio3[i])
                 {
-                    num_appoggio3[i]++;
+                    num_appoggio3[i] = num_appoggio3[i] + 1;
                 }
                 if (num_appoggio1[i] == num_appoggio3[i])
                 {
-                    num_appoggio3[i]++;
+                    num_appoggio3[i] = num_appoggio3[i] + 1;
                 }
             }
 
-            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE
+            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE 1 RIGA
             {
                 decine1[i] = random.Next(0, 9);
 
@@ -273,7 +387,7 @@ namespace Tombola
                 }
             }
 
-            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE
+            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE 2 RIGA
             {
                 decine2[i] = random.Next(0, 9);
 
@@ -286,7 +400,7 @@ namespace Tombola
                 }
             }
 
-            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE
+            for (int i = 0; i < 5; i++) //CICLO RANDOM PER SCELTA DECINE 3 RIGA
             {
                 decine3[i] = random.Next(0, 9);
 
@@ -303,7 +417,7 @@ namespace Tombola
             Array.Sort(decine2);
             Array.Sort(decine3);
 
-            for (int i = 0; i<5 ;i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE CORRETTA
+            for (int i = 0; i < 5 ;i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE DELLA DECINA
             {
                 for (int j = 0; j<9; j++)
                 {
@@ -315,7 +429,7 @@ namespace Tombola
                 }
             }
 
-            for (int i = 0; i < 5; i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE CORRETTA
+            for (int i = 0; i < 5; i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE DELLA DECINA
             {
                 for (int j = 0; j < 9; j++)
                 {
@@ -327,7 +441,7 @@ namespace Tombola
                 }
             }
 
-            for (int i = 0; i < 5; i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE CORRETTA
+            for (int i = 0; i < 5; i++) //CICLO IMPOSTAZIONE ARRAY NELLA POSIZIONE DELlA DECINA
             {
                 for (int j = 0; j < 9; j++)
                 {
@@ -373,7 +487,5 @@ namespace Tombola
             Console.WriteLine();
             return numeri;
         }
-
-
     }
 }
